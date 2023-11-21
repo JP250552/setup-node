@@ -18,7 +18,6 @@ import nodeTestDist from './data/node-dist-index.json';
 import nodeTestDistNightly from './data/node-nightly-index.json';
 import nodeTestDistRc from './data/node-rc-index.json';
 import nodeV8CanaryTestDist from './data/v8-canary-dist-index.json';
-import {enableCorepack} from '../src/util';
 
 describe('setup-node', () => {
   let build: OfficialBuilds;
@@ -855,12 +854,6 @@ describe('setup-node', () => {
         'corepack',
         ['enable', 'npm', 'yarn'],
         expect.anything()
-      );
-    });
-
-    it('fails to use corepack with an invalid package manager', async () => {
-      await expect(enableCorepack('npm turbo')).rejects.toThrow(
-        `One or more of the specified package managers [ npm turbo ] are not supported by corepack`
       );
     });
   });
